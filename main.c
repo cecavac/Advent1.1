@@ -33,12 +33,12 @@ int main() {
     str--;
     while (str < limit) {
         int val = 0;
-        int digit;
         int positive = *(++str) == '+';
+        int digit = *(++str);
 
-        while ((digit = *(++str)) > '\n') {
+        do {
             val = val * 10 + digit - '0';
-        }
+        } while ((digit = *(++str)) > '\n');
 
     	if (!positive) {
     		val = -val;
