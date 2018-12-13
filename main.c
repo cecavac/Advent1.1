@@ -10,7 +10,7 @@ int main() {
     char *str;
     int pid;
 
-    int fd = open ("newinput.txt", O_RDONLY);
+    int fd = open ("input.txt", O_RDONLY);
     int status = fstat(fd, &s);
     size = s.st_size;
 
@@ -30,19 +30,19 @@ int main() {
             str++;
     }
 
-    for (; str < limit; str++) {
+    while (str < limit) {
         int val = 0;
         int positive = *(str++) == '+';
 
-        while (*str > '\n') {
+        while (*(str++) > '\n') {
             val = val * 10 + *(str++) - '0';
         }
 
-    	if (positive) {
-    		sum += val;
-    	} else {
-    		sum -= val;
+    	if (!positive) {
+    		val = -val;
     	}
+
+        sum += val;
     }
 
     if (pid) {
