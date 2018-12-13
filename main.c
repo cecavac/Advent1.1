@@ -30,12 +30,14 @@ int main() {
             str++;
     }
 
+    str--;
     while (str < limit) {
         int val = 0;
-        int positive = *(str++) == '+';
+        int digit;
+        int positive = *(++str) == '+';
 
-        while (*(str++) > '\n') {
-            val = val * 10 + *(str++) - '0';
+        while ((digit = *(++str)) > '\n') {
+            val = val * 10 + digit - '0';
         }
 
     	if (!positive) {
